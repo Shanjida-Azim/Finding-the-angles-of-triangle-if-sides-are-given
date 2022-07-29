@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <math.h>
+
+#define RAD2DEG 57.2958 //IN C THE INVERSE OF COS WILL GIVE THE ANS IN RADIAN SO WE HAVE TO DEFINE IT 
+#define TOTAL_DEG 180.0 // THE SUM OF THE ANGLES IN TRIANGLE IS 180 DEGREE
+
+int main( void )
+{
+
+    int  a, b, c;   // user entered lengths of sides of triangle
+    double A, B, C; // calculated angle values in degrees
+    printf("Enter the length of triangle a, b ,c:");
+
+    scanf( "%d %d %d", &a, &b, &c );
+    
+    A = RAD2DEG * acos((double)(b*b + c*c - a*a)/(2.0*b*c));
+
+    B = RAD2DEG * acos((double)(c*c + a*a - b*b)/(2.0*a*c));
+
+    // third angle done this way to absorb fractional degree errors
+    C = TOTAL_DEG -(A + B);
+
+    printf("  So the angles  of triangle are  %.2f , %.2f %.2f", A, B, C);
+    return 0;
+}
